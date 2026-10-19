@@ -1,0 +1,33 @@
+{
+  "schemes": [
+    {
+      "name": "Breeze",
+      "background": "#232627",
+      "foreground": "#FCFCFC",
+      "cursorColor": "#FCFCFC",
+      "selectionBackground": "#31363B",
+      "black": "#232627",
+      "red": "#ED1515",
+      "green": "#11D116",
+      "yellow": "#F67400",
+      "blue": "#1D99F3",
+      "purple": "#9B59B6",
+      "cyan": "#1ABC9C",
+      "white": "#FCFCFC",
+      "brightBlack": "#7F8C8D",
+      "brightRed": "#C0392B",
+      "brightGreen": "#1CDC9A",
+      "brightYellow": "#FDBC4B",
+      "brightBlue": "#3DAEE9",
+      "brightPurple": "#8E44AD",
+      "brightCyan": "#16A085",
+      "brightWhite": "#FFFFFF"
+    }
+  ],
+  "defaults": {
+    "colorScheme": "Breeze",
+    "font": { "face": "MesloLGM Nerd Font", "size": 10 },
+    "opacity": 74,
+    "useAcrylic": true
+  }
+}

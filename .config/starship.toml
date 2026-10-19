@@ -7,7 +7,7 @@ command_timeout = 1000
 # Change the default prompt format
  format = """\
  [╭╴ ](231)$env_var \
- $all[╰─ ](231)$character"""
+ $all[╰─󰅂 ](231)$character"""
 
 
 
@@ -17,8 +17,8 @@ command_timeout = 1000
 # Change the default prompt characters
 [character]
 # old config
-# success_symbol = "[](238)"
-# error_symbol = "[](238)"
+# success_symbol = "[󰅂](238)"
+# error_symbol = "[󰅂](238)"
 success_symbol = ""
 error_symbol = ""
 
@@ -44,13 +44,13 @@ style = "150"
 [directory]
 truncation_length = 1
 truncation_symbol = "…/"
-home_symbol = " ~"
+home_symbol = "󰋜 ~"
 read_only_style = "197"
 read_only = "  "
 format = "at [$path]($style)[$read_only]($read_only_style) "
 
 [git_branch]
-symbol = " "
+symbol = "󰊢 "
 format = "via [$symbol$branch]($style) "
 # truncation_length = 4
 truncation_symbol = "…/"
@@ -61,24 +61,24 @@ format = '[\($all_status$ahead_behind\)]($style) '
 style = "bold green"
 conflicted = "🏳"
 up_to_date = " "
-untracked = " "
+untracked = " "
 ahead = "⇡${count}"
 diverged = "⇕⇡${ahead_count}⇣${behind_count}"
 behind = "⇣${count}"
-stashed = " "
+stashed = "󰏗 "
 modified = " "
 staged = '[++\($count\)](green)'
-renamed = "襁 "
+renamed = " "
 deleted = " "
 
 [kubernetes]
-format = 'via [ﴱ $context\($namespace\)](bold purple) '
+format = 'via [󱃾 $context\($namespace\)](bold purple) '
 disabled = false
 
 # (deactivated because of no space left)
 # 
 [terraform]
-format = "via [ terraform $version]($style) 壟 [$workspace]($style) "
+format = "via [ terraform $version]($style)  [$workspace]($style) "
 disabled = true
 
 [vagrant]
@@ -94,8 +94,7 @@ format = "via [ $version](bold purple) "
 disabled = true
 
 [python]
-symbol = " "
-python_binary = "python3"
+symbol = " "
 #disabled = true
 #format = 'via [${symbol} (${version} )(\($virtualenv\) )]($style)'
 #style = "bold yellow"
@@ -105,7 +104,7 @@ python_binary = "python3"
 #version_format = "v${raw}"
 
 [nodejs]
-format = "via [ $version](bold green) "
+format = "via [ $version](bold green) "
 disabled = true
 
 [ruby]

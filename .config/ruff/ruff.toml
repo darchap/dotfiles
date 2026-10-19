@@ -1,4 +1,6 @@
 line-length = 120
+
+[lint]
 select = ["ALL"]
 ignore = ["W191"]
 extend-safe-fixes = ["D205", "E402", "COM812"]
