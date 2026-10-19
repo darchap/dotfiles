@@ -1,5 +1,5 @@
 # Windows setup. On a new machine:
-#   git clone https://github.com/darchap/dotifles.git $HOME\dotfiles
+#   git clone https://github.com/darchap/dotfiles.git $HOME\dotfiles
 #   powershell -ExecutionPolicy Bypass -File $HOME\dotfiles\windows\install.ps1
 # Safe to re-run; re-run after a pull to refresh the copied ruff and Windows Terminal settings.
 $DotfilesDir = Split-Path $PSScriptRoot
