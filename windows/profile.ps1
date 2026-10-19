@@ -76,11 +76,19 @@ function colormap {
 	Write-Host
 }
 
-# --- Prompt
-if (Get-Module -ListAvailable Terminal-Icons) { Import-Module Terminal-Icons }
-if (Get-Command starship -ErrorAction SilentlyContinue) {
-	$env:STARSHIP_CONFIG = "$DotfilesDir\.config\starship.toml"
-	# nf-md-microsoft_windows; char code because 5.1 reads BOM-less files as ANSI
-	$env:STARSHIP_DISTRO = "$([char]::ConvertFromUtf32(0xF0372)) "
-	Invoke-Expression (& starship init powershell)
+# --- Prompt, jumping, fuzzy search
+$env:STARSHIP_CONFIG = "$DotfilesDir\.config\starship.toml"
+# nf-md-microsoft_windows; char code because 5.1 reads BOM-less files as ANSI
+$env:STARSHIP_DISTRO = "$([char]::ConvertFromUtf32(0xF0372)) "
+if (Get-Command starship -ErrorAction SilentlyContinue) { Invoke-Expression (& starship init powershell) }
+# zoxide wraps the prompt, so it must come after starship
+if (Get-Command zoxide -ErrorAction SilentlyContinue) { Invoke-Expression (& zoxide init powershell | Out-String) }
+
+# Terminal-Icons (~400 ms) and PSFzf load once the prompt is idle
+$null = Register-EngineEvent PowerShell.OnIdle -MaxTriggerCount 1 -Action {
+	if (Get-Module -ListAvailable Terminal-Icons) { Import-Module Terminal-Icons -Global }
+	if ((Get-Module -ListAvailable PSFzf) -and (Get-Command fzf -ErrorAction SilentlyContinue)) {
+		Import-Module PSFzf -Global
+		Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
+	}
 }

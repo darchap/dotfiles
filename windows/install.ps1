@@ -8,7 +8,7 @@ function Step($msg) { Write-Host "==> $msg" -ForegroundColor Cyan }
 function Set-Prop($obj, $name, $value) { $obj | Add-Member -NotePropertyName $name -NotePropertyValue $value -Force }
 
 Step 'Packages'
-foreach ($id in 'Microsoft.WindowsTerminal', 'Microsoft.PowerShell', 'Starship.Starship') {
+foreach ($id in 'Microsoft.WindowsTerminal', 'Microsoft.PowerShell', 'Starship.Starship', 'ajeetdsouza.zoxide', 'junegunn.fzf') {
 	winget list -e --id $id --accept-source-agreements *> $null
 	if ($LASTEXITCODE -eq 0) { Write-Host "  $id already installed"; continue }
 	winget install -e --id $id --silent --accept-package-agreements --accept-source-agreements
@@ -38,11 +38,11 @@ if ((New-Object System.Drawing.Text.InstalledFontCollection).Families.Name -cont
 	Write-Host '  installed for this user; restart open apps to see it'
 }
 
-Step 'Terminal-Icons module (PowerShell 7)'
+Step 'Terminal-Icons and PSFzf modules (PowerShell 7)'
 # 7.6+ installs as MSIX, so look it up on PATH rather than under Program Files
 $pwsh = (Get-Command pwsh -ErrorAction SilentlyContinue).Source
 if ($pwsh) {
-	& $pwsh -NoProfile -Command 'if (-not (Get-Module -ListAvailable Terminal-Icons)) { Install-Module Terminal-Icons -Scope CurrentUser -Force }'
+	& $pwsh -NoProfile -Command 'foreach ($m in ''Terminal-Icons'', ''PSFzf'') { if (-not (Get-Module -ListAvailable $m)) { Install-Module $m -Scope CurrentUser -Force } }'
 } else { Write-Warning '  pwsh not found, skipped' }
 
 Step 'PowerShell profiles'
