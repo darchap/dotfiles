@@ -26,7 +26,7 @@
   ],
   "defaults": {
     "colorScheme": "Breeze",
-    "font": { "face": "MesloLGM Nerd Font", "size": 10 },
+    "font": { "face": "MesloLGM Nerd Font", "size": 11 },
     "opacity": 74,
     "useAcrylic": true
   }

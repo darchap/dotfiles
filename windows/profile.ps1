@@ -80,6 +80,7 @@ function colormap {
 if (Get-Module -ListAvailable Terminal-Icons) { Import-Module Terminal-Icons }
 if (Get-Command starship -ErrorAction SilentlyContinue) {
 	$env:STARSHIP_CONFIG = "$DotfilesDir\.config\starship.toml"
-	$env:STARSHIP_DISTRO = "$([char]0xF17A) "  # nf-fa-windows; char code because 5.1 reads BOM-less files as ANSI
+	# nf-md-microsoft_windows; char code because 5.1 reads BOM-less files as ANSI
+	$env:STARSHIP_DISTRO = "$([char]::ConvertFromUtf32(0xF0372)) "
 	Invoke-Expression (& starship init powershell)
 }
