@@ -6,7 +6,7 @@ else
 fi
 
 case $distro_id in
-    *kali*)                  ICON="ﴣ";;
+    *kali*)                  ICON="";;
     *arch*)                  ICON="";;
     *debian*)                ICON="";;
     *raspbian*)              ICON="";;
@@ -27,7 +27,7 @@ case $distro_id in
     *devuan*)                ICON="";;
     *manjaro*)               ICON="";;
     *rhel*)                  ICON="";;
-    *macos*)                 ICON="";;
+    *macos*)                 ICON="";;
     *)                       ICON="";;
 esac
 
