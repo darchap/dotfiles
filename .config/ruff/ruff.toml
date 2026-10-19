@@ -2,24 +2,19 @@ line-length = 120
 
 [lint]
 select = ["ALL"]
-ignore = ["W191"]
-extend-safe-fixes = ["D205", "E402", "COM812"]
-fixable = ["ALL"]
+# W191, D206 and COM812 conflict with the formatter (tab indent, trailing commas)
+ignore = ["W191", "D206", "COM812"]
+extend-safe-fixes = ["D205"]
 
 [format]
-quote-style = "double"
 indent-style = "tab"
 #skip-magic-trailing-comma = true
-
-[lint.flake8-quotes]
-inline-quotes = "double"
 
 [lint.pydocstyle]
 convention = "pep257"
 
 [lint.isort]
 case-sensitive = true
-combine-as-imports = true
 force-single-line = true
-# Use a single line after each import block.
+# Two blank lines after the import block.
 lines-after-imports = 2
