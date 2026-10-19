@@ -6,6 +6,10 @@
 	defaultBranch = main
 [gpg]
 	format = ssh
+[commit]
+	gpgsign = true
+[tag]
+	gpgsign = true
 [help]
 	# Automatically correct and execute mistyped commands.
 	autocorrect = 50

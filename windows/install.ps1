@@ -62,6 +62,12 @@ Step 'Git'
 $inc = "$DotfilesDir\.gitconfig" -replace '\\', '/'
 if ((git config --global --get-all include.path) -notcontains $inc) { git config --global --add include.path $inc }
 Write-Host "  ~/.gitconfig includes $inc"
+if (-not (Test-Path "$HOME\.ssh\signing")) {
+	New-Item -ItemType Directory -Force "$HOME\.ssh" | Out-Null
+	# Via cmd: Windows PowerShell drops an empty "" argument, so ssh-keygen would prompt for a passphrase
+	cmd /c "ssh-keygen -q -t ed25519 -N `"`" -C `"$env:USERNAME@$env:COMPUTERNAME signing`" -f `"$HOME\.ssh\signing`""
+	Write-Host '  created ~/.ssh/signing; add ~/.ssh/signing.pub at https://github.com/settings/ssh/new as a Signing Key'
+}
 
 Step 'Ruff'
 New-Item -ItemType Directory -Force "$env:APPDATA\ruff" | Out-Null
